@@ -1,0 +1,38 @@
+<mat-card class="project-card">
+
+   <img mat-card-image [src]="image()" alt="Preview do projeto" (error)="setDefaultImage($event)" />
+
+   <mat-card-header>
+      <p class="project-card__title">
+         <mat-card-title class="project-card__title-content">{{ title() }}</mat-card-title>
+      </p>
+   </mat-card-header>
+   <mat-card-content class="project-card__description">
+      <p class="project-card__description-content">{{ description() }}</p>
+   </mat-card-content>
+
+   <mat-divider class="project-card__divider"></mat-divider>
+
+   <mat-card-actions class="card-actions">
+      <div class="info-button">
+         <button mat-icon-button matTooltip="{{ tooltipInfo() }}" matTooltipPosition="above"
+            aria-label="Informações do projeto">
+            <mat-icon>info</mat-icon>
+         </button>
+      </div>
+      <div class="action-buttons">
+         @if(demoLink()) {
+         <button mat-raised-button color="primary" (click)="openLink(demoLink())">
+            <mat-icon>language</mat-icon>
+            Demo
+         </button>
+         }
+         @if(codeLink()) {
+         <button mat-raised-button color="accent" (click)="openLink(codeLink())">
+            <mat-icon>code</mat-icon>
+            Código
+         </button>
+         }
+      </div>
+   </mat-card-actions>
+</mat-card>

@@ -1,0 +1,33 @@
+<swiper-container class="swiper-container" init="false">
+  @if (isLoading) {
+  <div class="swiper-loading">
+    <p class="swiper-loading__legend">Buscando Projetos</p>
+    <app-loading-dots />
+  </div>
+  } @else { @for(project of projectsList; track project.id) {
+  <swiper-slide class="slide-custom">
+    <app-project-card
+      class="card"
+      [title]="project.title"
+      [description]="project.description"
+      [image]="
+        project.image ? project.image : '/images/project_default_capa.png'
+      "
+      [demoLink]="project.demoLink"
+      [codeLink]="project.codeLink"
+      [tooltipInfo]="project.tooltipInfo"
+    >
+    </app-project-card>
+  </swiper-slide>
+  } @empty {
+  <div class="swiper-alternative">
+    <img
+      ngSrc="/images/projects-build-size400x367.png"
+      width="400"
+      height="367"
+      priority
+      alt="Projetos em Construção"
+    />
+  </div>
+  } }
+</swiper-container>

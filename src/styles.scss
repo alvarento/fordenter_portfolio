@@ -1,0 +1,51 @@
+@use "./styles/theme-colors-variables" as *;
+@use "@angular/material" as mat;
+@use "./styles/fonts.scss";
+
+:root {
+  --primary-color: #{$primary-color-light};
+  --bg-color: #{$bg-color-light};
+  --text-color: #{$text-color-light};
+  --second-text-color: #{$second-text-color-light};
+  --title-color: #{$title-color-light};
+  --wave-color: #{$wave-color-light};
+  --bg-card: #{$bg-card-light};
+  --button-color: #{$button-color-light};
+  --dots-load-color: #{$dots-load-color-light};
+  --tooltip-bg-color: #{$tooltip-bg-color-light};
+}
+
+.dark-theme {
+  --primary-color: #{$primary-color-dark};
+  --bg-color: #{$bg-color-dark};
+  --text-color: #{$text-color-dark};
+  --second-text-color: #{$second-text-color-dark};
+  --title-color: #{$title-color-dark};
+  --wave-color: #{$wave-color-dark};
+  --bg-card: #{$bg-card-dark};
+  --button-color: #{$button-color-dark};
+  --dots-load-color: #{$dots-load-color-dark};
+  --tooltip-bg-color: #{$tooltip-bg-color-dark};
+}
+
+:root,
+.dark-theme {
+  @include mat.tooltip-overrides(
+    (
+      container-color: var(--text-color),
+      supporting-text-color: var(--bg-color),
+    )
+  );
+}
+
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "poppins", "roboto", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--bg-color);
+}

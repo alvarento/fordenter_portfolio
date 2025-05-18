@@ -1,0 +1,132 @@
+.content {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column-reverse;
+    margin-top: 100px;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  h1 {
+    color: var(--title-color);
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: min(1.75rem, 5vw);
+  }
+
+  ul {
+    color: var(--text-color);
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: min(1.2rem, 4vw);
+
+      a {
+        color: var(--second-text-color);
+      }
+    }
+
+    .list-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .indicator-down {
+    padding-bottom: 1rem;
+    margin-top: auto;
+    text-align: center;
+
+    p {
+      font-size: 1.25rem;
+      text-align: center;
+      color: var(--text-color);
+    }
+
+    .icon-down {
+      animation: bounce 2s infinite ease-in-out;
+      width: 50px;
+      height: 50px;
+      font-size: 3rem;
+      color: #1351d8;
+    }
+  }
+}
+
+.half {
+  display: flex;
+  flex: 1 1 50%;
+}
+
+.icon-sm {
+  width: 25px;
+  height: 25px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .personal-profile {
+    width: 100%;
+    text-align: center;
+
+    .personal-name {
+      font-size: min(2rem, 6vw);
+    }
+  }
+
+  .profile-image {
+    border-radius: 50%;
+    max-width: 250px;
+    width: 35%;
+    height: auto;
+  }
+
+  .personal-name {
+    font-size: 2rem;
+    color: var(--text-color);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .social-button {
+    background: var(--button-color);
+    color: var(--text-color);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(15px);
+    opacity: 0.7;
+  }
+}
