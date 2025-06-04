@@ -7,6 +7,7 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
 import { IProjectInfos } from '../../interfaces/project-infos.interface';
 import { ProjectService } from '../../services/project.service';
 import { NgOptimizedImage } from '@angular/common';
+import { LoadingDotsComponent } from '../loading-dots/loading-dots.component';
 
 register()
 
@@ -15,6 +16,7 @@ register()
   imports: [
     CommonModule,
     ProjectCardComponent,
+    LoadingDotsComponent,
     NgOptimizedImage
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -27,6 +29,7 @@ export class CustomSwiperComponent implements OnInit {
     private projectService: ProjectService) { }
 
   projectsList: IProjectInfos[] = [];
+  isLoading: boolean = true;
   // projectsList: IProjectInfos[] = projectsListMock;
 
   swiperElement = signal<SwiperContainer | null>(null)
@@ -55,9 +58,13 @@ export class CustomSwiperComponent implements OnInit {
     this.swiperElement.set(swiperElementConstructor as SwiperContainer);
     this.swiperElement()?.initialize();
 
+    this.isLoading = true;
     this.projectService.getProjectsFromCSV().subscribe({
       next: data => {
         this.projectsList = data;
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     });
   }
