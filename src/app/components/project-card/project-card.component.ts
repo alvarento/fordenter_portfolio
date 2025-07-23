@@ -6,12 +6,12 @@ import { MaterialModule } from '../../material/material.module';
   imports: [MaterialModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './project-card.component.html',
-  styleUrl: './project-card.component.scss'
+  styleUrl: './project-card.component.scss',
 })
 export class ProjectCardComponent {
   title = input<string>('');
   description = input<string>('');
-  image = input<string>('');
+  image = input<string>('images/project_default_capa.png');
   demoLink = input<string | undefined>(undefined);
   codeLink = input<string | undefined>(undefined);
   tooltipInfo = input<string>('');
@@ -19,5 +19,10 @@ export class ProjectCardComponent {
   openLink(url?: string) {
     if (!url) return;
     window.open(url, '_blank');
+  }
+
+  setDefaultImage(event: Event) {
+    const element = event.target as HTMLImageElement;
+    element.src = '/images/project_default_capa.png';
   }
 }
